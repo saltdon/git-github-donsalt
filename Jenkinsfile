@@ -5,12 +5,12 @@ pipeline {
                                   steps {
                                            echo 'Heello, this is from francis okole'
                                   }
-                         }
+                        }
                          stage('two') {
                                  steps {
                                          imput('Do you want to proceed?')
                                  }
-                         }
+                        }
                          stage('Three') {
                                  when {
                                        not {
@@ -21,5 +21,6 @@ pipeline {
                                 steps { 
                                        echo "Hello how are you"
                                 }
-                         }
-                 }
+                        }
+          } 
+}
