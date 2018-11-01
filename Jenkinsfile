@@ -1,7 +1,7 @@
 pipeline {
         agent any
                  stages {
-                         stages('one') {
+                        stages('one') {
                                   steps {
                                            echo 'Heello, this is from francis okole'
                                   }
