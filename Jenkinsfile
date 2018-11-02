@@ -1,20 +1,23 @@
 pipeline {
   agent any
   stages {
-    stage('build') {
+    stage('compile stage') {
       steps {
-        sh "./build-artifact.sh"
-      }
-    }
-    stage('test in docker') {
-      agent {
-        docker {
-          image 'ubuntu:16.04'
-          reuseNode true
+        withMaven(maven : 'maven_3_1_2') {
+            sh 'mvn clean compile'
         }
       }
-      steps {
-        sh "./run-tests-in-docker.sh"
+    }
+    stage('test in stage') {
+      steps { 
+        withMaven(maven : 'maven_3_1_2') {
+           sh 'mvn test'
+          
+         
+     stage('deployment stage') {
+      steps { 
+        withMaven(maven : 'maven_3_1_2') {
+           sh 'mvn deployment'
       }
     }
   }
