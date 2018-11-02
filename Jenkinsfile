@@ -1,10 +1,16 @@
-pipeline {
-    agent { docker { image 'maven:3.3.3' } }
-    stages {
-        stage('build') {
-            steps {
-                sh 'mvn --version'
-            }
-        }
+//vars/notifiableBuild.groovy
+#!/usr/bin/groovy
+
+def call(body) {
+    try {
+        notify(start)
+        body()
+    	notify(success)
+    } catch(exception) {
+        notify(failure)
     }
+}
+
+def notify(state) {
+    //notify scm
 }
